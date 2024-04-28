@@ -26,14 +26,12 @@ $(document).ready(function () {
     });
 
     function animMeter() {
-        $(".meter > span").each(function () {
-            $(this)
-                .data("origWidth", $(this).width())
-                .width(0)
-                .animate({
-                    width: $(this).data("origWidth")
-                }, 1200);
-        });
+        $(".meter > span").each(function() {
+            let w = $($(this).parent()).width() / 100 * $(this).width();
+            $(this).data("origWidth", w)
+                   .width(0)
+                   .animate({ width: $(this).data("origWidth") + "%" }, 1200);
+         });
     }
 
     animMeter();
